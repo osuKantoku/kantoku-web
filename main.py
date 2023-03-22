@@ -52,12 +52,12 @@ def appName() -> str:
 import requests
 @app.template_global()
 def getOnlineUsers() -> int:
-    onlineJson = requests.get("https://api.fysix.xyz/get_player_count")
+    onlineJson = requests.get(f"https://api.{glob.config.domain}/get_player_count")
     onlineUsers = onlineJson.json()['counts']['online']
     return onlineUsers
 @app.template_global()
 def getTotalUsers() -> int:
-    totalJson = requests.get("https://api.fysix.xyz/get_player_count")
+    totalJson = requests.get("https://api.{glob.config.domain}/get_player_count")
     totalUsers = totalJson.json()['counts']['total']
     return totalUsers
 @app.template_global()
